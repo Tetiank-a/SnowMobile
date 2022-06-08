@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/footer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_alignParentBottom="true" >
+
+        <Button
+            android:id="@+id/sessions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/footer"
+            app:layout_constraintLeft_toLeftOf="@id/footer"
+            app:layout_constraintRight_toLeftOf="@+id/tasks"
+            app:layout_constraintTop_toTopOf="@id/footer"
+            android:textSize="15sp"
+            android:layout_weight="1"
+            android:text="Sessions" />
+
+        <Button
+            android:id="@+id/tasks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/footer"
+            app:layout_constraintLeft_toRightOf="@id/sessions"
+            app:layout_constraintRight_toLeftOf="@+id/learn"
+            app:layout_constraintTop_toTopOf="@id/footer"
+            android:textSize="15sp"
+            android:layout_weight="1"
+            android:text="Tasks" />
+
+        <Button
+            android:id="@+id/learn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/footer"
+            app:layout_constraintLeft_toRightOf="@id/tasks"
+            app:layout_constraintRight_toRightOf="@+id/footer"
+            app:layout_constraintTop_toTopOf="@id/footer"
+            android:textSize="15sp"
+            android:layout_weight="1"
+            android:text="Learn" />
+
+
+</LinearLayout>
