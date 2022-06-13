@@ -25,14 +25,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@layout/footer"
-            android:layout_below="@layout/header" >
+            android:layout_below="@layout/header">
 
             <TextView
+                android:id="@+id/tv_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Content goes here"
                 android:textColor="#DA5D5D"
-                android:textSize="400sp" />
+                android:textSize="10sp" />
         </ScrollView>
 
 
