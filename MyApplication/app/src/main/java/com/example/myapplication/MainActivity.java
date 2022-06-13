@@ -40,51 +40,21 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void getHelloFromServer(View view) {
-
-        // Calling a POST request
-       /* JSONObject object = new JSONObject();
-        try {
-            //input your API parameters
-            object.put("email","4@gmail.com");
-            object.put("password","4444444444");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        JSONObject res = ((Extended) this.getApplication()).postData(object, "login");
-        System.out.println("String Response : "+ res.toString());*/
-        //System.out.println("!!!!!!!!!!!!!!!!!!!!!!" + ((Extended) this.getApplication()).result);
-        JSONObject loginData = new JSONObject();
-        try {
-            //input your API parameters
-            loginData.put("email","4@gmail.com");
-            loginData.put("password","4444444444");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        ((Extended) this.getApplication()).postData("login", loginData);
-        RequestQueue queue = Volley.newRequestQueue(this);
-
-        String url = "https://snowboard-school.herokuapp.com";
-
-
-        // Request a string response from the provided URL.
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        // Display the first 500 characters of the response string.
-                        Toast.makeText(MainActivity.this, response, Toast.LENGTH_SHORT).show();
-                    }
-                }, new Response.ErrorListener() {
+        Api api = new Api(MainActivity.this);
+        api.Login("4@gmail.com", "4444444444", new Api.VolleyResponseListener() {
             @Override
-            public void onErrorResponse(VolleyError error) {
-                textView.setText(error.toString());
+            public void onError(String message) {
+                Toast.makeText(MainActivity.this, "Error: " + message, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onResponse(SessionData sessionData) {
+                Toast.makeText(MainActivity.this, "Token: " + sessionData.token, Toast.LENGTH_SHORT).show();
+                ((Extended) getApplication()).setToken(sessionData.token);
+                ((Extended) getApplication()).setUserId(sessionData.userID);
+                ((Extended) getApplication()).setRole(sessionData.role);
             }
         });
-
-        // Add the request to the RequestQueue.
-        queue.add(stringRequest);
     }
 
 }

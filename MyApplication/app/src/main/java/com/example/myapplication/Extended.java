@@ -16,6 +16,7 @@ import org.json.JSONObject;
 public class Extended extends Application {
     private String token;
     private String userId;
+    private String role;
 
     public String getToken() {
         return token;
@@ -25,37 +26,20 @@ public class Extended extends Application {
         return userId;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String newRole) {
+        role = newRole;
+    }
+
     public void setToken(String newToken) {
         token = newToken;
     }
 
     public void setUserId(String newUserId) {
         userId = newUserId;
-    }
-
-    public void postData(String addUrl, JSONObject object) {
-        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-
-        // Enter the correct url for your api service site
-        String url = getResources().getString(R.string.string_url) + addUrl;
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, object,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        //resResponse = response;
-                        System.out.println("String Response : "+ response.toString());
-                        //result = response.toString();
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                //resResponse = new JSONObject();
-                System.out.println("Error getting response");
-                //result = "error";
-            }
-        });
-        requestQueue.add(jsonObjectRequest);
-
     }
 
 }
