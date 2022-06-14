@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignUp">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        android:text="Sign UP"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_centerHorizontal="true"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintBottom_toTopOf="@+id/line1"
+        android:id="@+id/line0">
+
+        <TextView
+            android:id="@+id/textName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Name"
+            android:textSize="30sp"
+            app:layout_constraintRight_toLeftOf="@+id/regEmail" />
+
+        <EditText
+            android:id="@+id/regName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text=""
+            android:orientation="vertical"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/textName"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_centerHorizontal="true"
+        app:layout_constraintTop_toBottomOf="@+id/line0"
+        app:layout_constraintBottom_toTopOf="@+id/line2"
+        android:id="@+id/line1">
+
+        <TextView
+            android:id="@+id/textEmail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Email"
+            android:textSize="30sp"
+            app:layout_constraintRight_toLeftOf="@+id/regEmail" />
+
+        <EditText
+            android:id="@+id/regEmail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text=""
+            android:orientation="vertical"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/textEmail"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_centerHorizontal="true"
+        app:layout_constraintBottom_toTopOf="@+id/line3"
+        app:layout_constraintTop_toBottomOf="@+id/line1"
+        android:id="@+id/line2">
+
+        <TextView
+            android:id="@+id/textPassword1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Password"
+            android:textSize="30sp"
+            app:layout_constraintRight_toLeftOf="@+id/imageButton3" />
+
+        <EditText
+            android:id="@+id/regPassword1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text=""
+            android:orientation="vertical"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            app:layout_constraintLeft_toRightOf="@+id/textPassword1"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_centerHorizontal="true"
+        app:layout_constraintBottom_toTopOf="@+id/line4"
+        app:layout_constraintTop_toBottomOf="@+id/line1"
+        android:id="@+id/line3">
+
+        <TextView
+            android:id="@+id/textPassword2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Repeat password"
+            android:textSize="30sp"
+            app:layout_constraintRight_toLeftOf="@+id/imageButton3" />
+
+        <EditText
+            android:id="@+id/regPassword2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text=""
+            android:orientation="vertical"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            app:layout_constraintLeft_toRightOf="@+id/textPassword2"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_centerHorizontal="true"
+        app:layout_constraintBottom_toTopOf="@+id/Register"
+        android:id="@+id/line4">
+
+        <TextView
+            android:id="@+id/level"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Level"
+            android:textSize="30sp"
+            app:layout_constraintRight_toLeftOf="@+id/levelId" />
+
+
+
+        <Spinner
+            android:id="@+id/levelId"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            app:layout_constraintLeft_toRightOf="@+id/level" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/Register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign Up"
+        app:layout_constraintTop_toBottomOf="@+id/line4"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:onClick="getLevels"
+         />
+</androidx.constraintlayout.widget.ConstraintLayout>

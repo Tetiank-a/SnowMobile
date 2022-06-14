@@ -13,10 +13,13 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 public class Extended extends Application {
     private String token;
     private String userId;
     private String role;
+    private ArrayList<LevelsData> levels;
 
     public String getToken() {
         return token;
@@ -30,6 +33,8 @@ public class Extended extends Application {
         return role;
     }
 
+    public ArrayList<LevelsData> getLevels() { return levels; }
+
     public void setRole(String newRole) {
         role = newRole;
     }
@@ -41,5 +46,7 @@ public class Extended extends Application {
     public void setUserId(String newUserId) {
         userId = newUserId;
     }
+
+    public void setLevels(ArrayList<LevelsData> newLevels) { levels = newLevels; }
 
 }

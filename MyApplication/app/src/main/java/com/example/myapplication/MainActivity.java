@@ -20,6 +20,8 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     TextView textView;
@@ -53,6 +55,11 @@ public class MainActivity extends AppCompatActivity {
                 ((Extended) getApplication()).setToken(sessionData.token);
                 ((Extended) getApplication()).setUserId(sessionData.userID);
                 ((Extended) getApplication()).setRole(sessionData.role);
+            }
+
+            @Override
+            public void onResponse(ArrayList<LevelsData> levelsData) {
+
             }
         });
     }
