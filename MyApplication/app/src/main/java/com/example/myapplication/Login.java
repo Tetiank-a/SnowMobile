@@ -47,6 +47,11 @@ public class Login extends AppCompatActivity {
             public void onResponse(ArrayList<LevelsData> levelsData) {
 
             }
+
+            @Override
+            public void onResponse(String message) {
+
+            }
         });
     }
 

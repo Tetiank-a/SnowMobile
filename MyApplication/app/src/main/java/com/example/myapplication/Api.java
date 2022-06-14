@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class Api {
 
     SessionData sessionData;
-    ArrayList<LevelsData> levelsData;
+    ArrayList<LevelsData> levelsData = new ArrayList<LevelsData>();
 
     public static final String SNOW_SCHOOL_API = "https://snowboard-school.herokuapp.com/api/";
 
@@ -33,8 +33,9 @@ public class Api {
         void onResponse(SessionData sessionData);
 
         void onResponse(ArrayList<LevelsData> levelsData);
-    }
 
+        void onResponse(String message);
+    }
 
 
     public void Login(String email, String password, VolleyResponseListener volleyResponseListener) {
@@ -106,6 +107,38 @@ public class Api {
 
         MySingleton.getInstance(context).addToRequestQueue(jsonArrayRequest);
 
+    }
+
+    public void SignUp(User user, VolleyResponseListener volleyResponseListener) {
+        String url = SNOW_SCHOOL_API + "signup";
+
+        // Creating a JSON query from values
+        JSONObject object = new JSONObject();
+        try {
+            //input your API parameters
+            object.put("email", user.email);
+            object.put("password", user.password);
+            object.put("repeat_password", user.repeatPassword);
+            object.put("level_id", user.levelID);
+            object.put("username", user.name);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, object,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        volleyResponseListener.onResponse("ok");
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                volleyResponseListener.onError(error.getMessage());
+            }
+        });
+
+        MySingleton.getInstance(context).addToRequestQueue(jsonObjectRequest);
     }
 
 }

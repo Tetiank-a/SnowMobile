@@ -61,6 +61,11 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(ArrayList<LevelsData> levelsData) {
 
             }
+
+            @Override
+            public void onResponse(String message) {
+
+            }
         });
     }
 

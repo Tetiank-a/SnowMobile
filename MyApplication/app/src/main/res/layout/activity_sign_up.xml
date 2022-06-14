@@ -187,6 +187,7 @@
         app:layout_constraintTop_toBottomOf="@+id/line4"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:onClick="getLevels"
+        android:onClick="signUp"
          />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
