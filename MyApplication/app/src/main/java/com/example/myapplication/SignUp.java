@@ -48,7 +48,7 @@ public class SignUp extends AppCompatActivity {
         api.SignUp(user, new Api.VolleyResponseListener() {
             @Override
             public void onError(String message) {
-                Toast.makeText(SignUp.this, "!!! - Error: " + message, Toast.LENGTH_SHORT).show();
+                Toast.makeText(SignUp.this, "Error: " + message, Toast.LENGTH_SHORT).show();
             }
 
             @Override

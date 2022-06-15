@@ -112,18 +112,21 @@ public class Api {
     public void SignUp(User user, VolleyResponseListener volleyResponseListener) {
         String url = SNOW_SCHOOL_API + "signup";
 
+
+
         // Creating a JSON query from values
         JSONObject object = new JSONObject();
         try {
             //input your API parameters
             object.put("email", user.email);
             object.put("password", user.password);
-            object.put("repeat_password", user.repeatPassword);
+            object.put("password_repeat", user.repeatPassword);
             object.put("level_id", user.levelID);
             object.put("username", user.name);
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, object,
                 new Response.Listener<JSONObject>() {
@@ -134,7 +137,15 @@ public class Api {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                volleyResponseListener.onError(error.getMessage());
+                if (!user.repeatPassword.equals(user.password)) {
+                    volleyResponseListener.onError("Passwords do not match");
+                } else {
+                    if (user.password.length() < 8) {
+                        volleyResponseListener.onError("The password is too short");
+                    } else {
+                        volleyResponseListener.onError("Please check if all fields are filled");
+                    }
+                }
             }
         });
 
