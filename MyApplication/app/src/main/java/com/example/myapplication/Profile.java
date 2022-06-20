@@ -15,42 +15,37 @@ import org.json.JSONArray;
 
 import java.util.ArrayList;
 
-public class SignUp extends AppCompatActivity {
+public class Profile extends AppCompatActivity {
 
-
-    User user = new User();
     Spinner spinner;
     EditText userName;
     EditText userEmail;
-    EditText userPassword1;
-    EditText userPassword2;
+
+    String username;
+    String email;
+    String levelID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up);
+        setContentView(R.layout.activity_profile);
 
         spinner = (Spinner) findViewById(R.id.levelId);
         userName = (EditText) findViewById(R.id.regName);
         userEmail = (EditText) findViewById(R.id.regEmail);
-        userPassword1 = (EditText) findViewById(R.id.regPassword1);
-        userPassword2 = (EditText) findViewById(R.id.regPassword2);
 
         getLevels();
-
     }
 
-    public void signUp(View view) {
-        user.name = userName.getText().toString();
-        user.email = userEmail.getText().toString();
-        user.password = userPassword1.getText().toString();
-        user.repeatPassword = userPassword2.getText().toString();
+    public void updateProfile(View view) {
+        username = userName.getText().toString();
+        email = userEmail.getText().toString();
 
-        Api api = new Api(SignUp.this);
-        api.SignUp(user, new Api.VolleyResponseListener() {
+        Api api = new Api(Profile.this);
+        api.UpdateUser(username, email, levelID, ((Extended) getApplication()).getUserId(), ((Extended) getApplication()).getToken(), new Api.VolleyResponseListener() {
             @Override
             public void onError(String message) {
-                Toast.makeText(SignUp.this, "Error: " + message, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Profile.this, "Error: " + message, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -65,7 +60,7 @@ public class SignUp extends AppCompatActivity {
 
             @Override
             public void onResponse(String message) {
-                Intent intent = new Intent(SignUp.this, Login.class);
+                Intent intent = new Intent(Profile.this, MainActivity.class);
                 startActivity(intent);
             }
 
@@ -78,11 +73,11 @@ public class SignUp extends AppCompatActivity {
 
     public void getLevels() {
 
-        Api api = new Api(SignUp.this);
+        Api api = new Api(Profile.this);
         api.getLevels(new Api.VolleyResponseListener() {
             @Override
             public void onError(String message) {
-                Toast.makeText(SignUp.this, "Incorrect email or password.",
+                Toast.makeText(Profile.this, "Incorrect email or password.",
                         Toast.LENGTH_SHORT).show();
             }
 
@@ -111,7 +106,7 @@ public class SignUp extends AppCompatActivity {
                     }
                 }
 
-                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(SignUp.this,
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(Profile.this,
                         android.R.layout.simple_spinner_item, arrayList);
                 arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinner.setAdapter(arrayAdapter);
@@ -125,12 +120,13 @@ public class SignUp extends AppCompatActivity {
 
                         for (int i = 0; i < levels.size(); ++i) {
                             if (levels.get(i).levelName.equals(selectedLevel)) {
-                                user.levelID = levels.get(i).levelID;
+                                levelID = levels.get(i).levelID;
                             }
                         }
                     }
+
                     @Override
-                    public void onNothingSelected(AdapterView <?> parent) {
+                    public void onNothingSelected(AdapterView<?> parent) {
                     }
                 });
             }

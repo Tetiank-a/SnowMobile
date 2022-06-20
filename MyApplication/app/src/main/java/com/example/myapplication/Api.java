@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.content.Context;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -13,11 +14,15 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Api {
 
     SessionData sessionData;
     ArrayList<LevelsData> levelsData = new ArrayList<LevelsData>();
+
+    JSONArray jsonArray;
 
     public static final String SNOW_SCHOOL_API = "https://snowboard-school.herokuapp.com/api/";
 
@@ -35,6 +40,8 @@ public class Api {
         void onResponse(ArrayList<LevelsData> levelsData);
 
         void onResponse(String message);
+
+        void onResponse(JSONArray jsonArray);
     }
 
 
@@ -45,8 +52,8 @@ public class Api {
         JSONObject object = new JSONObject();
         try {
             //input your API parameters
-            object.put("email",email);
-            object.put("password",password);
+            object.put("email", email);
+            object.put("password", password);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -113,7 +120,6 @@ public class Api {
         String url = SNOW_SCHOOL_API + "signup";
 
 
-
         // Creating a JSON query from values
         JSONObject object = new JSONObject();
         try {
@@ -152,4 +158,86 @@ public class Api {
         MySingleton.getInstance(context).addToRequestQueue(jsonObjectRequest);
     }
 
+    public void UpdateUser(String username, String email, String levelID, String userID, String token, VolleyResponseListener volleyResponseListener) {
+        String url = SNOW_SCHOOL_API + "users/" + userID;
+
+
+        // Creating a JSON query from values
+        JSONObject object = new JSONObject();
+        JSONObject lvlObject = new JSONObject();
+        try {
+            lvlObject.put("_id", levelID);
+            lvlObject.put("name", "-");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        try {
+            //input your API parameters
+            object.put("email", email);
+            object.put("level", lvlObject);
+            object.put("username", username);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println(object.toString());
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.PUT, url, object,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        volleyResponseListener.onResponse("ok");
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                volleyResponseListener.onError("Please check if all fields are filled");
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<>();
+                // Basic Authentication
+                //String auth = "Basic " + Base64.encodeToString(CONSUMER_KEY_AND_SECRET.getBytes(), Base64.NO_WRAP);
+
+                headers.put("Authorization", "Bearer " + token);
+                return headers;
+            }
+        };
+
+
+        MySingleton.getInstance(context).addToRequestQueue(jsonObjectRequest);
+    }
+
+    public void getTasks(String token, VolleyResponseListener volleyResponseListener) {
+        String url = SNOW_SCHOOL_API + "tasks";
+        jsonArray = new JSONArray();
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        jsonArray = response;
+                        volleyResponseListener.onResponse(jsonArray);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                volleyResponseListener.onError("Something wrong");
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<>();
+                // Basic Authentication
+                //String auth = "Basic " + Base64.encodeToString(CONSUMER_KEY_AND_SECRET.getBytes(), Base64.NO_WRAP);
+
+                headers.put("Authorization", "Bearer " + token);
+                return headers;
+            }
+        };
+
+        MySingleton.getInstance(context).addToRequestQueue(jsonArrayRequest);
+
+    }
 }

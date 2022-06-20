@@ -5,14 +5,18 @@
       <map>
         <entry key="..\:/GitHub/SnowMobile/MyApplication/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2265" />
         <entry key="..\:/GitHub/SnowMobile/MyApplication/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2265" />
+        <entry key="..\:/GitHub/SnowMobile/MyApplication/app/src/main/res/drawable/profileName_foreground.xml" value="0.2265" />
         <entry key="..\:/GitHub/SnowMobile/MyApplication/app/src/main/res/layout-w1240dp/activity_login.xml" value="0.12617135207496652" />
         <entry key="..\:/GitHub/SnowMobile/MyApplication/app/src/main/res/layout-w936dp/activity_login.xml" value="0.1437841530054645" />
         <entry key="..\:/GitHub/SnowMobile/MyApplication/app/src/main/res/layout/activity_login.xml" value="0.19067028985507245" />
-        <entry key="..\:/GitHub/SnowMobile/MyApplication/app/src/main/res/layout/activity_main.xml" value="0.17152899824253076" />
+        <entry key="..\:/GitHub/SnowMobile/MyApplication/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/GitHub/SnowMobile/MyApplication/app/src/main/res/layout/activity_profile.xml" value="0.264" />
         <entry key="..\:/GitHub/SnowMobile/MyApplication/app/src/main/res/layout/activity_sign_up.xml" value="0.19067028985507245" />
-        <entry key="..\:/GitHub/SnowMobile/MyApplication/app/src/main/res/layout/footer.xml" value="0.2" />
-        <entry key="..\:/GitHub/SnowMobile/MyApplication/app/src/main/res/layout/header.xml" value="0.19067028985507245" />
+        <entry key="..\:/GitHub/SnowMobile/MyApplication/app/src/main/res/layout/footer.xml" value="0.264" />
+        <entry key="..\:/GitHub/SnowMobile/MyApplication/app/src/main/res/layout/header.xml" value="0.2" />
+        <entry key="..\:/GitHub/SnowMobile/MyApplication/app/src/main/res/layout/list_tasks.xml" value="0.264" />
         <entry key="..\:/GitHub/SnowMobile/MyApplication/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1925" />
+        <entry key="..\:/GitHub/SnowMobile/MyApplication/app/src/main/res/mipmap-anydpi-v26/profileName.xml" value="0.1" />
       </map>
     </option>
   </component>

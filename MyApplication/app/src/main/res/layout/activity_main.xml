@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent">
 
     <!-- Header aligned to top -->
     <include layout="@layout/header" />
@@ -14,28 +13,17 @@
 
     <!-- Content below header and above footer -->
     <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_above="@id/footer"
         android:layout_below="@id/header"
         android:gravity="center">
 
-        <ScrollView
-            android:id="@+id/scroll"
+        <ListView
+            android:id="@+id/middleBar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@layout/footer"
-            android:layout_below="@layout/header">
-
-            <TextView
-                android:id="@+id/tv_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Content goes here"
-                android:textColor="#DA5D5D"
-                android:textSize="10sp" />
-        </ScrollView>
-
+            android:background="#78ACC5" />
 
     </RelativeLayout>
 

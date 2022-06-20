@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+
 import java.util.ArrayList;
 
 public class Login extends AppCompatActivity {
@@ -50,6 +52,11 @@ public class Login extends AppCompatActivity {
 
             @Override
             public void onResponse(String message) {
+
+            }
+
+            @Override
+            public void onResponse(JSONArray jsonArray) {
 
             }
         });
