@@ -70,7 +70,7 @@ public class TaskInfo extends AppCompatActivity {
             @Override
             public void onResponse(JSONArray jsonArray) {
                 try {
-                    infoTaskUser.setText(jsonArray.getJSONObject(0).getString("username"));
+                    infoTaskUser.setText("Created by " + jsonArray.getJSONObject(0).getString("username"));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -83,7 +83,7 @@ public class TaskInfo extends AppCompatActivity {
         });
 
         infoTaskName.setText(task.name);
-        infoTaskLevel.setText(task.level.levelName);
+        infoTaskLevel.setText("Task level : " + task.level.levelName);
         infoTaskText.setText(task.text);
 
         getLifecycle().addObserver(youTubePlayerView);
@@ -91,9 +91,20 @@ public class TaskInfo extends AppCompatActivity {
         youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
             @Override
             public void onReady(@NonNull YouTubePlayer youTubePlayer) {
-                String videoId = "SqpVHk2O778";
+                String videoId = getVideoId(task.link);
                 youTubePlayer.cueVideo(videoId, 0);
             }
         });
+    }
+
+    private String getVideoId(String url) {
+        StringBuilder videoId = new StringBuilder();
+        for (int i = url.length() - 1; i >= 0; i--) {
+            Character x = url.charAt(i);
+            if (x.equals('/'))
+                break;
+            videoId.insert(0, url.charAt(i));
+        }
+        return videoId.toString();
     }
 }
