@@ -8,6 +8,11 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -15,12 +20,14 @@ class TaskAdapter extends ArrayAdapter<Task> {
     private LayoutInflater inflater;
     private int layout;
     private ArrayList<Task> noteList;
+    private String token;
 
-    TaskAdapter(Context context, int resource, ArrayList<Task> tasks) {
+    TaskAdapter(Context context, int resource, ArrayList<Task> tasks, String token) {
         super(context, resource, tasks);
         this.noteList = tasks;
         this.layout = resource;
         this.inflater = LayoutInflater.from(context);
+        this.token = token;
     }
     public View getView(int position, View convertView, ViewGroup parent) {
 
@@ -51,7 +58,44 @@ class TaskAdapter extends ArrayAdapter<Task> {
         }
         viewHolder.dataView.setText(task.level.levelName.toString());
 
-        viewHolder.imgField.setText(task.userId);
+        //viewHolder.imgField.setText(task.userId);
+
+        Api api = new Api(getContext());
+        api.getUser(task.userId, token, new Api.VolleyResponseListener() {
+            @Override
+            public void onError(String message) {
+                Toast.makeText(getContext(), "Something went wrong.",
+                        Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onResponse(SessionData sessionData) {
+            }
+
+            @Override
+            public void onResponse(ArrayList<LevelsData> levelsData) {
+
+            }
+
+            @Override
+            public void onResponse(String message) {
+
+            }
+
+            @Override
+            public void onResponse(JSONArray jsonArray) {
+                try {
+                    viewHolder.imgField.setText(jsonArray.getJSONObject(0).getString("username"));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onResponse(JSONObject jsonObject) {
+
+            }
+        });
 
         return convertView;
     }
@@ -67,4 +111,5 @@ class TaskAdapter extends ArrayAdapter<Task> {
             imgField = view.findViewById(R.id.taskCreator);
         }
     }
+
 }

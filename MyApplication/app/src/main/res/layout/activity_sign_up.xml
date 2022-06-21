@@ -23,7 +23,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        app:layout_constraintBottom_toTopOf="@+id/line1"
+        app:layout_constraintBottom_toTopOf="@+id/infoTaskName"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/levelName">
@@ -53,11 +53,11 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/line1"
+        android:id="@+id/infoTaskName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        app:layout_constraintBottom_toTopOf="@+id/line2"
+        app:layout_constraintBottom_toTopOf="@+id/infoTaskUser"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/line0">
@@ -87,14 +87,14 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/line2"
+        android:id="@+id/infoTaskUser"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        app:layout_constraintBottom_toTopOf="@+id/line3"
+        app:layout_constraintBottom_toTopOf="@+id/infoTaskLevel"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/line1">
+        app:layout_constraintTop_toBottomOf="@+id/infoTaskName">
 
         <TextView
             android:id="@+id/textPassword1"
@@ -119,14 +119,14 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/line3"
+        android:id="@+id/infoTaskLevel"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         app:layout_constraintBottom_toTopOf="@+id/line4"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/line1">
+        app:layout_constraintTop_toBottomOf="@+id/infoTaskName">
 
         <TextView
             android:id="@+id/textPassword2"

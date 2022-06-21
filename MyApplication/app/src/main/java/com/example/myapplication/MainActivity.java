@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
         button1 = (ImageButton) findViewById(R.id.profile);
+        textView = (TextView) findViewById(R.id.taskCreator);
         getTasks();
     }
 
@@ -92,24 +93,31 @@ public class MainActivity extends AppCompatActivity {
 
                 System.out.println(tasks.get(1).taskId + "---------------->" + tasks.get(2).taskId);
                 ListView productList = findViewById(R.id.middleBar);
-                TaskAdapter adapter = new TaskAdapter(MainActivity.this, R.layout.list_tasks, tasks);
+                TaskAdapter adapter = new TaskAdapter(MainActivity.this, R.layout.list_tasks, tasks, ((Extended) getApplication()).getToken());
                 productList.setAdapter(adapter);
 
 
                 listView = findViewById(R.id.middleBar);
-                listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
-                    public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                         String item = ((TextView) view.findViewById(R.id.taskCreator)).getText().toString();
-                        Toast.makeText(getApplicationContext(), item, Toast.LENGTH_SHORT).show();
-                        //currentNote = item;
-                        return false;
+                        //Toast.makeText(getApplicationContext(), tasks.get(i).name, Toast.LENGTH_SHORT).show();
+                        ((Extended) getApplication()).setSelectedTask(tasks.get(i));
+                        Intent intent = new Intent(MainActivity.this, TaskInfo.class);
+                        startActivity(intent);
                     }
                 });
 
                 registerForContextMenu(listView);
             }
+
+            @Override
+            public void onResponse(JSONObject jsonObject) {
+
+            }
         });
 
     }
+
 }

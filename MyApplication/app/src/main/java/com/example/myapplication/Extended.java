@@ -20,6 +20,13 @@ public class Extended extends Application {
     private String userId;
     private String role;
     private ArrayList<LevelsData> levels;
+    private Task selectedTask;
+
+    public Task getSelectedTask() { return selectedTask; }
+
+    public void setSelectedTask(Task selectedTask) {
+        this.selectedTask = selectedTask;
+    }
 
     public String getToken() {
         return token;

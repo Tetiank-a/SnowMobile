@@ -42,6 +42,8 @@ public class Api {
         void onResponse(String message);
 
         void onResponse(JSONArray jsonArray);
+
+        void onResponse(JSONObject jsonObject);
     }
 
 
@@ -115,6 +117,36 @@ public class Api {
         MySingleton.getInstance(context).addToRequestQueue(jsonArrayRequest);
 
     }
+
+    public void getUser(String userId, String token, VolleyResponseListener volleyResponseListener) {
+        String url = SNOW_SCHOOL_API + "users/" + userId;
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        //System.out.println(userId + "         *********************************         " + response.get(0).toString());
+                        volleyResponseListener.onResponse(response);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                System.out.println(error.toString());
+                volleyResponseListener.onError("Something wrong");
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<>();
+                headers.put("Authorization", "Bearer " + token);
+                return headers;
+            }
+        };
+
+        MySingleton.getInstance(context).addToRequestQueue(jsonArrayRequest);
+
+    }
+
 
     public void SignUp(User user, VolleyResponseListener volleyResponseListener) {
         String url = SNOW_SCHOOL_API + "signup";

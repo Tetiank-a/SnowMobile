@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -57,6 +58,11 @@ public class Login extends AppCompatActivity {
 
             @Override
             public void onResponse(JSONArray jsonArray) {
+
+            }
+
+            @Override
+            public void onResponse(JSONObject jsonObject) {
 
             }
         });

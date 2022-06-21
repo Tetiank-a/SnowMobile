@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TaskInfo">
+
+
+    <TextView
+        android:id="@+id/infoTaskName"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="Task name"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/infoTaskVideo"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"/>
+
+
+    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/infoTaskName"
+        app:layout_constraintBottom_toTopOf="@+id/infoTaskUser"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:autoPlay="true"
+        android:id="@+id/infoTaskVideo"
+        app:videoId="Hd9id4voyl8"
+        />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_centerHorizontal="true"
+        app:layout_constraintTop_toBottomOf="@id/infoTaskVideo"
+        app:layout_constraintBottom_toTopOf="@+id/infoTaskLevel"
+        android:id="@+id/infoTaskUser"
+        android:textSize="20dp"
+        android:text="Created by ..."
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginBottom="10dp"
+        />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_centerHorizontal="true"
+        app:layout_constraintTop_toBottomOf="@id/infoTaskVideo"
+        app:layout_constraintBottom_toTopOf="@+id/infoTaskText"
+        android:id="@+id/infoTaskLevel"
+        android:textSize="20dp"
+        android:text="Level ..."
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp"
+        />
+
+
+        <TextView
+            android:id="@+id/infoTaskText"
+            android:layout_width="match_parent"
+            app:layout_constraintTop_toBottomOf="@id/infoTaskLevel"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginHorizontal="30dp"
+            android:textSize="20dp"
+            android:text="Text about task"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:scrollbars = "vertical"
+            />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
