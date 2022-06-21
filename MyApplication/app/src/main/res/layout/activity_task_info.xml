@@ -30,9 +30,7 @@
         app:layout_constraintBottom_toTopOf="@+id/infoTaskUser"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:autoPlay="true"
         android:id="@+id/infoTaskVideo"
-        app:videoId="Hd9id4voyl8"
         />
 
     <TextView
