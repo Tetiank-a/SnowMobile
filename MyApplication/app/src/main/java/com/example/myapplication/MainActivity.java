@@ -26,6 +26,9 @@ public class MainActivity extends AppCompatActivity {
     ImageButton button1;
     RequestQueue requestQueue;
     ListView listView;
+    ImageButton sessionButton;
+    ImageButton tasksButton;
+    ImageButton lessonButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +41,34 @@ public class MainActivity extends AppCompatActivity {
         button1 = (ImageButton) findViewById(R.id.profile);
         textView = (TextView) findViewById(R.id.taskCreator);
         getTasks();
+
+        sessionButton = (ImageButton) findViewById(R.id.sessions);
+        lessonButton = (ImageButton) findViewById(R.id.learn);
+        tasksButton = (ImageButton) findViewById(R.id.tasks);
+
+        sessionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, SearchLesson.class);
+                startActivity(intent);
+            }
+        });
+
+        lessonButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, OnlineSession.class);
+                startActivity(intent);
+            }
+        });
+
+        tasksButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 

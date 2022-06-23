@@ -21,6 +21,8 @@ public class Extended extends Application {
     private String role;
     private ArrayList<LevelsData> levels;
     private Task selectedTask;
+    private ArrayList<Location> locations;
+    private ArrayList<Session> sessions;
 
     public Task getSelectedTask() { return selectedTask; }
 

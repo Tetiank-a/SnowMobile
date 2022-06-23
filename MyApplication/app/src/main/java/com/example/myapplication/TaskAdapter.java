@@ -105,7 +105,7 @@ class TaskAdapter extends ArrayAdapter<Task> {
         final TextView dataView;
         final TextView imgField;
         ViewHolder(View view){
-            nameView = view.findViewById(R.id.taskName);
+            nameView = view.findViewById(R.id.filterImage);
             imageView = view.findViewById(R.id.levelIcon);
             dataView = view.findViewById(R.id.levelName);
             imgField = view.findViewById(R.id.taskCreator);

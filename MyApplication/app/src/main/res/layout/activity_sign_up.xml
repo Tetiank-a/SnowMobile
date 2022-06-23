@@ -29,7 +29,7 @@
         app:layout_constraintTop_toBottomOf="@+id/levelName">
 
         <TextView
-            android:id="@+id/textName"
+            android:id="@+id/fromLabel"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -38,7 +38,7 @@
             app:layout_constraintRight_toLeftOf="@+id/regEmail" />
 
         <EditText
-            android:id="@+id/regName"
+            android:id="@+id/dateFrom"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -47,7 +47,7 @@
             android:orientation="vertical"
             android:text=""
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@+id/textName"
+            app:layout_constraintLeft_toRightOf="@+id/fromLabel"
             app:layout_constraintTop_toTopOf="parent" />
 
     </LinearLayout>
@@ -63,7 +63,7 @@
         app:layout_constraintTop_toBottomOf="@+id/line0">
 
         <TextView
-            android:id="@+id/textEmail"
+            android:id="@+id/toLabel"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -81,7 +81,7 @@
             android:orientation="vertical"
             android:text=""
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@+id/textEmail"
+            app:layout_constraintLeft_toRightOf="@+id/toLabel"
             app:layout_constraintTop_toTopOf="parent" />
 
     </LinearLayout>
@@ -155,33 +155,33 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        app:layout_constraintBottom_toTopOf="@+id/Register"
+        app:layout_constraintBottom_toTopOf="@+id/Filter"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
 
         <TextView
-            android:id="@+id/level"
+            android:id="@+id/locationLabel"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Level"
             android:textSize="30sp"
-            app:layout_constraintRight_toLeftOf="@+id/levelId" />
+            app:layout_constraintRight_toLeftOf="@+id/locationSelected" />
 
 
         <Spinner
-            android:id="@+id/levelId"
+            android:id="@+id/locationSelected"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:orientation="vertical"
-            app:layout_constraintLeft_toRightOf="@+id/level" />
+            app:layout_constraintLeft_toRightOf="@+id/locationLabel" />
 
     </LinearLayout>
 
     <Button
-        android:id="@+id/Register"
+        android:id="@+id/Filter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="signUp"

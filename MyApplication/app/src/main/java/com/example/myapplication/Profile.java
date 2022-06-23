@@ -31,8 +31,8 @@ public class Profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        spinner = (Spinner) findViewById(R.id.levelId);
-        userName = (EditText) findViewById(R.id.regName);
+        spinner = (Spinner) findViewById(R.id.locationSelected);
+        userName = (EditText) findViewById(R.id.dateFrom);
         userEmail = (EditText) findViewById(R.id.regEmail);
 
         getLevels();
