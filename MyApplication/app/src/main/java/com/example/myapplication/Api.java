@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.content.Context;
+import android.provider.CallLog;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -113,6 +114,64 @@ public class Api {
                 volleyResponseListener.onError("Something wrong");
             }
         });
+
+        MySingleton.getInstance(context).addToRequestQueue(jsonArrayRequest);
+
+    }
+
+    public void getLocations(String token, VolleyResponseListener volleyResponseListener) {
+        String url = SNOW_SCHOOL_API + "locations";
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        volleyResponseListener.onResponse(response);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                volleyResponseListener.onError("Something wrong");
+            }
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<>();
+                // Basic Authentication
+                //String auth = "Basic " + Base64.encodeToString(CONSUMER_KEY_AND_SECRET.getBytes(), Base64.NO_WRAP);
+
+                headers.put("Authorization", "Bearer " + token);
+                return headers;
+            }
+        };
+
+        MySingleton.getInstance(context).addToRequestQueue(jsonArrayRequest);
+
+    }
+
+    public void getSessions(String token, VolleyResponseListener volleyResponseListener) {
+        String url = SNOW_SCHOOL_API + "sessions";
+
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        volleyResponseListener.onResponse(response);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                volleyResponseListener.onError("Something wrong");
+            }
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<>();
+                headers.put("Authorization", "Bearer " + token);
+                return headers;
+            }
+        };
 
         MySingleton.getInstance(context).addToRequestQueue(jsonArrayRequest);
 

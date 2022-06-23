@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 public class User {
+    String id = "";
     String name = "";
     String email = "";
     String password = "";
@@ -21,5 +22,10 @@ public class User {
         this.password = "";
         this.repeatPassword = "";
         this.levelID = "";
+    }
+
+    public User(String id, String name) {
+        this.id = id;
+        this.name = name;
     }
 }

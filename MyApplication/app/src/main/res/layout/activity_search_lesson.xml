@@ -7,14 +7,6 @@
     android:background="#78ACC5"
     tools:context=".SearchLesson">
 
-    <ImageView
-        android:id="@+id/filterImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/ic_baseline_date_range_24" />
 
     <LinearLayout
         android:id="@+id/line0"
@@ -23,7 +15,7 @@
         app:layout_constraintBottom_toTopOf="@+id/line1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/filterImage">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/fromLabel"
@@ -31,6 +23,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="Date from"
+            android:gravity="center"
             android:textSize="20sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@+id/dateFrom"
@@ -53,18 +46,25 @@
             android:onClick="openDatePicker1"
             />
 
-        <Button
-            android:id="@+id/timeFrom"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:layout_width="0dp"
-            android:textSize="20sp"
+
+
+        <NumberPicker
+            android:id="@+id/timeFrom1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintLeft_toRightOf="@+id/dateFrom"
+            app:layout_constraintRight_toLeftOf="@+id/timeFrom2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+        <NumberPicker
+            android:id="@+id/timeFrom2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toRightOf="@+id/timeFrom1"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            style="?android:spinnerStyle"
-            android:text="20:30"
             />
 
     </LinearLayout>
@@ -84,6 +84,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="Date to"
+            android:gravity="center"
             android:textSize="20sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@+id/dateTo"
@@ -106,18 +107,23 @@
             android:onClick="openDatePicker2"
             />
 
-        <Button
-            android:id="@+id/timeTo"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:layout_width="0dp"
-            android:textSize="20sp"
+        <NumberPicker
+            android:id="@+id/timeTo1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintLeft_toRightOf="@+id/dateTo"
+            app:layout_constraintRight_toLeftOf="@+id/timeTo2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+        <NumberPicker
+            android:id="@+id/timeTo2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toRightOf="@+id/timeTo1"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            style="?android:spinnerStyle"
-            android:text="20:30"
             />
 
     </LinearLayout>
@@ -159,6 +165,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/button_background_color"
         android:text="Search"
+        android:onClick="applyFilter"
         android:textColor="@color/button_text_color"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

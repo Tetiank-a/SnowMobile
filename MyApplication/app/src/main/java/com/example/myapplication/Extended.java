@@ -23,6 +23,7 @@ public class Extended extends Application {
     private Task selectedTask;
     private ArrayList<Location> locations;
     private ArrayList<Session> sessions;
+    private ArrayList<FilteredSession> filteredSessions;
 
     public Task getSelectedTask() { return selectedTask; }
 
@@ -57,5 +58,9 @@ public class Extended extends Application {
     }
 
     public void setLevels(ArrayList<LevelsData> newLevels) { levels = newLevels; }
+
+    public void setFilteredSessions(ArrayList<FilteredSession> newFilteredSessions) { filteredSessions = newFilteredSessions; }
+
+    public ArrayList<FilteredSession> getFilteredSessions() { return filteredSessions; }
 
 }

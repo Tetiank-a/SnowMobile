@@ -22,4 +22,6 @@ public class Session {
         this.dtFinish = dtFinish;
         this.location = location;
     }
+
+
 }
