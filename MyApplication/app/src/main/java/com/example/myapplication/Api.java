@@ -330,4 +330,45 @@ public class Api {
         MySingleton.getInstance(context).addToRequestQueue(jsonArrayRequest);
 
     }
+
+    public void UpdateSession(String sessionID, String userID, String token, VolleyResponseListener volleyResponseListener) {
+        String url = SNOW_SCHOOL_API + "sessions/" + sessionID;
+
+
+        // Creating a JSON query from values
+        JSONObject object = new JSONObject();
+
+        try {
+            //input your API parameters
+            object.put("user_id", userID);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println(object.toString());
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.PUT, url, object,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        volleyResponseListener.onResponse("ok");
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                volleyResponseListener.onError("Please check if all fields are filled");
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<>();
+                headers.put("Authorization", "Bearer " + token);
+                return headers;
+            }
+        };
+
+
+        MySingleton.getInstance(context).addToRequestQueue(jsonObjectRequest);
+    }
+
 }

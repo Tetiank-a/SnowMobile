@@ -87,6 +87,14 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void changeLocEng(View view) {
+        ((Extended) getApplication()).setLang("eng");
+    }
+
+    public void changeLocUkr(View view) {
+        ((Extended) getApplication()).setLang("ukr");
+    }
+
     public void getTasks() {
 
         Api api = new Api(MainActivity.this);

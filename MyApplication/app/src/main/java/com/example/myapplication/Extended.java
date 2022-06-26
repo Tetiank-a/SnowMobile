@@ -25,6 +25,17 @@ public class Extended extends Application {
     private ArrayList<Session> sessions;
     private ArrayList<FilteredSession> filteredSessions = new ArrayList<>();
 
+    // may be "eng" or "ukr"
+    private String lang = "eng";
+
+    public void setLang(String lang) {
+        this.lang = lang;
+    }
+
+    public String getLang() {
+        return lang;
+    }
+
     public Task getSelectedTask() { return selectedTask; }
 
     public void setSelectedTask(Task selectedTask) {
@@ -62,5 +73,9 @@ public class Extended extends Application {
     public void setFilteredSessions(ArrayList<FilteredSession> newFilteredSessions) { filteredSessions = newFilteredSessions; }
 
     public ArrayList<FilteredSession> getFilteredSessions() { return filteredSessions; }
+
+    public void updateFilteredSession(int position) {
+        filteredSessions.remove(position);
+    }
 
 }

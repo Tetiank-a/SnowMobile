@@ -29,6 +29,8 @@ public class MySessionsActivity extends AppCompatActivity {
     ImageButton sessionButton;
     ImageButton tasksButton;
     ImageButton lessonButton;
+    ImageButton mySessionsButton;
+
     ArrayList<FilteredSession> sessionsData;
 
     @Override
@@ -41,6 +43,7 @@ public class MySessionsActivity extends AppCompatActivity {
         sessionButton = (ImageButton) findViewById(R.id.sessions);
         lessonButton = (ImageButton) findViewById(R.id.learn);
         tasksButton = (ImageButton) findViewById(R.id.tasks);
+        mySessionsButton = (ImageButton) findViewById(R.id.mySessions);
 
         sessionButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,9 +68,29 @@ public class MySessionsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        mySessionsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MySessionsActivity.this, MySessionsActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 
+    public void getHelloFromServer(View view) {
+        Intent intent = new Intent(MySessionsActivity.this, Profile.class);
+        startActivity(intent);
+    }
+
+    public void changeLocEng(View view) {
+        ((Extended) getApplication()).setLang("eng");
+    }
+
+    public void changeLocUkr(View view) {
+        ((Extended) getApplication()).setLang("ukr");
+    }
 
     public void applyFilter() {
 

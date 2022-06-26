@@ -22,6 +22,7 @@ public class SessionsActivity extends AppCompatActivity {
     ImageButton sessionButton;
     ImageButton tasksButton;
     ImageButton lessonButton;
+    ImageButton mySessionsButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,7 @@ public class SessionsActivity extends AppCompatActivity {
         sessionButton = (ImageButton) findViewById(R.id.sessions);
         lessonButton = (ImageButton) findViewById(R.id.learn);
         tasksButton = (ImageButton) findViewById(R.id.tasks);
+        mySessionsButton = (ImageButton) findViewById(R.id.mySessions);
 
         sessionButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,13 +58,35 @@ public class SessionsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        mySessionsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SessionsActivity.this, MySessionsActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    public void getHelloFromServer(View view) {
+        Intent intent = new Intent(SessionsActivity.this, Profile.class);
+        startActivity(intent);
+    }
+
+    public void changeLocEng(View view) {
+        ((Extended) getApplication()).setLang("eng");
+    }
+
+    public void changeLocUkr(View view) {
+        ((Extended) getApplication()).setLang("ukr");
     }
 
     public void getSessions() {
 
         ArrayList<FilteredSession> sessions = ((Extended) getApplication()).getFilteredSessions();
         recyclerView = findViewById(R.id.sessionsList);
-        SessionRecAdapter adapter = new SessionRecAdapter(SessionsActivity.this, sessions);
+        SessionRecAdapter adapter = new SessionRecAdapter(SessionsActivity.this, sessions,
+                ((Extended) getApplication()).getToken(), ((Extended) getApplication()).getUserId());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
