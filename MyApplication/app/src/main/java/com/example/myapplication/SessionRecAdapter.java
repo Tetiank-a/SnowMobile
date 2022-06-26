@@ -3,8 +3,6 @@ package com.example.myapplication;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.ColorSpace;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,8 +18,6 @@ import org.json.JSONObject;
 import org.threeten.bp.LocalDateTime;
 import org.threeten.bp.format.DateTimeFormatter;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class SessionRecAdapter extends RecyclerView.Adapter<SessionRecAdapter.MyViewHolder> {
@@ -125,7 +121,7 @@ public class SessionRecAdapter extends RecyclerView.Adapter<SessionRecAdapter.My
             instructor = itemView.findViewById(R.id.instructorName);
             from = itemView.findViewById(R.id.from);
             to = itemView.findViewById(R.id.to);
-            imageButton = itemView.findViewById(R.id.register);
+            imageButton = itemView.findViewById(R.id.unregister);
         }
     }
 }

@@ -38,7 +38,7 @@
         android:textSize="8dp"
         app:layout_constraintBottom_toTopOf="@+id/to"
         app:layout_constraintLeft_toRightOf="@+id/instructorName"
-        app:layout_constraintRight_toRightOf="@+id/register"
+        app:layout_constraintRight_toRightOf="@+id/unregister"
         app:layout_constraintTop_toTopOf="parent"
         android:maxLines="1"
         android:ellipsize="end"/>
@@ -53,11 +53,11 @@
         android:textSize="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="@+id/from"
-        app:layout_constraintRight_toLeftOf="@+id/register"
+        app:layout_constraintRight_toLeftOf="@+id/unregister"
         app:layout_constraintTop_toBottomOf="@+id/from" />
 
     <ImageButton
-        android:id="@+id/register"
+        android:id="@+id/unregister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@android:drawable/ic_input_add"

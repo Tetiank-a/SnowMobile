@@ -147,7 +147,8 @@ public class MySessionsActivity extends AppCompatActivity {
                 ((Extended) getApplication()).setFilteredSessions(sessionsFiltered);
 
                 recyclerView = findViewById(R.id.sessionsList);
-                MySessionRecAdapter adapter = new MySessionRecAdapter(MySessionsActivity.this, sessionsFiltered);
+                MySessionRecAdapter adapter = new MySessionRecAdapter(MySessionsActivity.this,
+                        sessionsFiltered, ((Extended) getApplication()).getToken());
                 recyclerView.setAdapter(adapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(MySessionsActivity.this));
             }
