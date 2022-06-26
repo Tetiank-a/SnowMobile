@@ -23,7 +23,7 @@ public class Extended extends Application {
     private Task selectedTask;
     private ArrayList<Location> locations;
     private ArrayList<Session> sessions;
-    private ArrayList<FilteredSession> filteredSessions;
+    private ArrayList<FilteredSession> filteredSessions = new ArrayList<>();
 
     public Task getSelectedTask() { return selectedTask; }
 

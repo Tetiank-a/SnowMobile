@@ -308,7 +308,7 @@ public class SearchLesson extends AppCompatActivity {
                     LocalDateTime dTo = LocalDateTime.parse(sessionsData.get(i).dtFinish, pattern);
                     if (sessionsData.get(i).location.id.equals(locationID) &&
                             filter1.isBefore(dFrom.plusMinutes(1)) &&
-                            filter2.isAfter(dFrom.minusMinutes(1))) {
+                            filter2.isAfter(dFrom.minusMinutes(1)) && sessionsData.get(i).student.name.equals("-")) {
                         sessionsFiltered.add(sessionsData.get(i));
                     }
                 }

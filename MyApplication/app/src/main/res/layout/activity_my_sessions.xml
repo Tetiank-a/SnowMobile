@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MySessionsActivity">
+
+    <!-- Header aligned to top -->
+    <include layout="@layout/header" />
+
+    <!-- Footer aligned to bottom -->
+    <include layout="@layout/footer" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/footer"
+        android:layout_below="@id/header"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:gravity="center">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/sessionsList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#78ACC5" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

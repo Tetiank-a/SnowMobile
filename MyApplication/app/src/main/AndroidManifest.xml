@@ -14,6 +14,9 @@
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".MySessionsActivity"
+            android:exported="false" />
+        <activity
             android:name=".SessionsActivity"
             android:exported="false" />
         <activity
