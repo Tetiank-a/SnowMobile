@@ -8,7 +8,7 @@
     tools:context=".SignUp">
 
     <TextView
-        android:id="@+id/levelName"
+        android:id="@+id/from"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="72dp"
@@ -26,7 +26,7 @@
         app:layout_constraintBottom_toTopOf="@+id/infoTaskName"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/levelName">
+        app:layout_constraintTop_toBottomOf="@+id/from">
 
         <TextView
             android:id="@+id/fromLabel"

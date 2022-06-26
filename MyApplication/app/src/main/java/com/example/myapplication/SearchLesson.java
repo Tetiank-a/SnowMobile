@@ -20,6 +20,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import org.threeten.bp.LocalDateTime;
+import org.threeten.bp.format.DateTimeFormatter;
+
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -31,6 +33,7 @@ public class SearchLesson extends AppCompatActivity {
     private Button dateTo;
     private Spinner spinner;
     private String locationID;
+    private String filterFrom, filterTo;
     Integer y1, y2, m1, m2, d1, d2, hh1 = 0, hh2 = 0, mm1 = 0, mm2 = 0;
     private ArrayList<Location> locationsData;
     ArrayList<FilteredSession> sessionsData;
@@ -217,6 +220,8 @@ public class SearchLesson extends AppCompatActivity {
                         arrayList.add(locationsData.get(i).name);
                 }
 
+                locationID = locationsData.get(0).id;
+
                 ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(SearchLesson.this,
                         android.R.layout.simple_spinner_item, arrayList);
                 arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -226,7 +231,6 @@ public class SearchLesson extends AppCompatActivity {
                     public void onItemSelected(AdapterView<?> parent, View view, int position,
                                                long id) {
                         String selectedLocation = parent.getItemAtPosition(position).toString();
-
                         for (int i = 0; i < locationsData.size(); ++i) {
                             if (locationsData.get(i).name.equals(selectedLocation)) {
                                 locationID = locationsData.get(i).id;
@@ -249,6 +253,7 @@ public class SearchLesson extends AppCompatActivity {
     }
 
     public void applyFilter(View view) {
+
         LocalDateTime filter1 = LocalDateTime.of(y1, m1, d1, pickHour1.getValue(), pickMinute1.getValue());
         LocalDateTime filter2 = LocalDateTime.of(y2, m2, d2, pickHour2.getValue(), pickMinute2.getValue());
 
@@ -287,7 +292,7 @@ public class SearchLesson extends AppCompatActivity {
                         User student = new User(jsonArray.getJSONObject(i).getJSONObject("user").getString("_id"),
                                 jsonArray.getJSONObject(i).getJSONObject("user").getString("username"));
                         User teacher = new User(jsonArray.getJSONObject(i).getJSONObject("instructor").getString("_id"),
-                                jsonArray.getJSONObject(i).getJSONObject("user").getString("username"));
+                                jsonArray.getJSONObject(i).getJSONObject("instructor").getString("username"));
                         FilteredSession newSession = new FilteredSession(sessionID, teacher, student, dtstart, dtfinish, loc);
                         sessionsData.add(newSession);
                     }
@@ -296,11 +301,15 @@ public class SearchLesson extends AppCompatActivity {
                 }
 
                 // FILTERS !!!!!!!
+                DateTimeFormatter pattern = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
                 ArrayList<FilteredSession> sessionsFiltered = new ArrayList<>();
                 for (int i = 0; i < sessionsData.size(); ++i) {
-                    if (sessionsData.get(i).location.id.equals(locationID)) {
+                    LocalDateTime dFrom = LocalDateTime.parse(sessionsData.get(i).dtStart, pattern);
+                    LocalDateTime dTo = LocalDateTime.parse(sessionsData.get(i).dtFinish, pattern);
+                    if (sessionsData.get(i).location.id.equals(locationID) &&
+                            filter1.isBefore(dFrom.plusMinutes(1)) &&
+                            filter2.isAfter(dFrom.minusMinutes(1))) {
                         sessionsFiltered.add(sessionsData.get(i));
-                        System.out.println(sessionsData.get(i).location.name);
                     }
                 }
                 ((Extended) getApplication()).setFilteredSessions(sessionsFiltered);

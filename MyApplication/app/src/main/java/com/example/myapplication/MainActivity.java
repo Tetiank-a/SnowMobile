@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
         button1 = (ImageButton) findViewById(R.id.profile);
-        textView = (TextView) findViewById(R.id.taskCreator);
+        textView = (TextView) findViewById(R.id.instructorName);
         getTasks();
 
         sessionButton = (ImageButton) findViewById(R.id.sessions);
@@ -122,7 +122,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
 
-                System.out.println(tasks.get(1).taskId + "---------------->" + tasks.get(2).taskId);
                 ListView productList = findViewById(R.id.middleBar);
                 TaskAdapter adapter = new TaskAdapter(MainActivity.this, R.layout.list_tasks, tasks, ((Extended) getApplication()).getToken());
                 productList.setAdapter(adapter);
@@ -132,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        String item = ((TextView) view.findViewById(R.id.taskCreator)).getText().toString();
+                        String item = ((TextView) view.findViewById(R.id.instructorName)).getText().toString();
                         //Toast.makeText(getApplicationContext(), tasks.get(i).name, Toast.LENGTH_SHORT).show();
                         ((Extended) getApplication()).setSelectedTask(tasks.get(i));
                         Intent intent = new Intent(MainActivity.this, TaskInfo.class);

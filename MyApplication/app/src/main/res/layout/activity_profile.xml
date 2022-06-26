@@ -8,7 +8,7 @@
     tools:context=".Profile">
 
     <ImageView
-        android:id="@+id/filterImage"
+        android:id="@+id/locationName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,7 +24,7 @@
         app:layout_constraintBottom_toTopOf="@+id/infoTaskName"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/filterImage">
+        app:layout_constraintTop_toBottomOf="@+id/locationName">
 
         <TextView
             android:id="@+id/fromLabel"

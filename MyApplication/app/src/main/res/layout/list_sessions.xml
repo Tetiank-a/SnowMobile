@@ -9,17 +9,14 @@
 
     <TextView
         android:id="@+id/locationName"
-        android:layout_width="0sp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:layout_weight="1"
+        android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/instructorName"
         app:layout_constraintTop_toTopOf="parent"
-        android:maxLines="1"
-        android:maxLength="10"
-        android:ellipsize="end"/>
+        android:maxLines="1"/>
 
 
     <TextView
@@ -27,38 +24,47 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textSize="18sp"
-        android:layout_weight="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/locationName"
         app:layout_constraintRight_toLeftOf="@+id/from"
         app:layout_constraintTop_toTopOf="parent"
         android:maxLines="1"
-        android:maxLength="10"
         android:ellipsize="end"/>
     <TextView
         android:id="@+id/from"
         android:layout_width="0dp"
-        android:layout_weight="1"
         android:layout_height="wrap_content"
-        android:text="Level"
-        android:textAlignment="center"
+        android:text="Time from"
+        android:textSize="8dp"
         app:layout_constraintBottom_toTopOf="@+id/to"
         app:layout_constraintLeft_toRightOf="@+id/instructorName"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintRight_toRightOf="@+id/register"
         app:layout_constraintTop_toTopOf="parent"
         android:maxLines="1"
-        android:maxLength="10"
         android:ellipsize="end"/>
-    <ImageView
+
+    <TextView
         android:id="@+id/to"
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="Time to"
+        android:textSize="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@+id/from"
+        app:layout_constraintRight_toLeftOf="@+id/register"
+        app:layout_constraintTop_toBottomOf="@+id/from" />
+
+    <ImageButton
+        android:id="@+id/register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/ic_menu_gallery"
-        android:layout_weight="1"
+        android:background="@android:drawable/ic_input_add"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/instructorName"
+        app:layout_constraintLeft_toRightOf="@+id/from"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/from"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

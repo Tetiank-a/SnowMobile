@@ -32,7 +32,7 @@ public class Login extends AppCompatActivity {
         api.Login(emailEdit.getText().toString(), passwordEdit.getText().toString(), new Api.VolleyResponseListener() {
             @Override
             public void onError(String message) {
-                Toast.makeText(Login.this, "Incorrect email or password.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Login.this, message, Toast.LENGTH_SHORT).show();
             }
 
             @Override

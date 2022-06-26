@@ -60,7 +60,6 @@ public class Api {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, object,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -79,7 +78,8 @@ public class Api {
             @Override
             public void onErrorResponse(VolleyError error) {
                 sessionData = null;
-                volleyResponseListener.onError("Something wrong");
+                System.out.println(error.getMessage());
+                volleyResponseListener.onError("Something went wrong");
             }
         });
 
@@ -184,7 +184,6 @@ public class Api {
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-                        //System.out.println(userId + "         *********************************         " + response.get(0).toString());
                         volleyResponseListener.onResponse(response);
                     }
                 }, new Response.ErrorListener() {
