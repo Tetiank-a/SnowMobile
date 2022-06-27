@@ -179,7 +179,6 @@ public class Api {
 
     public void getUser(String userId, String token, VolleyResponseListener volleyResponseListener) {
         String url = SNOW_SCHOOL_API + "users/" + userId;
-
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONArray>() {
                     @Override
@@ -189,7 +188,6 @@ public class Api {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                System.out.println(error.toString());
                 volleyResponseListener.onError("Something wrong");
             }
         }) {
@@ -200,9 +198,7 @@ public class Api {
                 return headers;
             }
         };
-
         MySingleton.getInstance(context).addToRequestQueue(jsonArrayRequest);
-
     }
 
 
@@ -371,4 +367,47 @@ public class Api {
         MySingleton.getInstance(context).addToRequestQueue(jsonObjectRequest);
     }
 
+    public void getAdvice(IotData iotData, String token, VolleyResponseListener volleyResponseListener) {
+        String url = SNOW_SCHOOL_API + "advice/now";
+
+
+        // Creating a JSON query from values
+        JSONObject object = new JSONObject();
+        try {
+            //input your API parameters
+            object.put("angle", iotData.angle);
+            object.put("xspeed", iotData.xspeed);
+            object.put("yspeed", iotData.yspeed);
+            object.put("zspeed", iotData.zspeed);
+            object.put("point_left_back", iotData.point_left_back);
+            object.put("point_left_front", iotData.point_left_front);
+            object.put("point_right_back", iotData.point_right_back);
+            object.put("point_right_front", iotData.point_right_front);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, object,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        volleyResponseListener.onResponse(response);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                volleyResponseListener.onError("Something went wrong.");
+            }
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<>();
+                headers.put("Authorization", "Bearer " + token);
+                return headers;
+            }
+        };
+
+        MySingleton.getInstance(context).addToRequestQueue(jsonObjectRequest);
+    }
 }

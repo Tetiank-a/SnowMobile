@@ -21,13 +21,15 @@ class TaskAdapter extends ArrayAdapter<Task> {
     private int layout;
     private ArrayList<Task> noteList;
     private String token;
+    private String lang;
 
-    TaskAdapter(Context context, int resource, ArrayList<Task> tasks, String token) {
+    TaskAdapter(Context context, int resource, ArrayList<Task> tasks, String token, String lang) {
         super(context, resource, tasks);
         this.noteList = tasks;
         this.layout = resource;
         this.inflater = LayoutInflater.from(context);
         this.token = token;
+        this.lang = lang;
     }
     public View getView(int position, View convertView, ViewGroup parent) {
 
@@ -44,19 +46,32 @@ class TaskAdapter extends ArrayAdapter<Task> {
 
         viewHolder.nameView.setText(task.name);
 
-        if (task.level.levelName.toString().equals("kid")) {
+        if (task.level.levelName.equals("kid")) {
             viewHolder.imageView.setImageResource(R.drawable.kid);
         }
-        if (task.level.levelName.toString().equals("elementary")) {
+        if (task.level.levelName.equals("elementary")) {
             viewHolder.imageView.setImageResource(R.drawable.elementary);
         }
-        if (task.level.levelName.toString().equals("intermediate")) {
+        if (task.level.levelName.equals("intermediate")) {
             viewHolder.imageView.setImageResource(R.drawable.intermediate);
         }
-        if (task.level.levelName.toString().equals("advanced")) {
+        if (task.level.levelName.equals("advanced")) {
             viewHolder.imageView.setImageResource(R.drawable.advanced);
         }
-        viewHolder.dataView.setText(task.level.levelName.toString());
+
+        LevelsData levelX = task.level;
+        if (lang.equals("ukr")) {
+            if (levelX.levelName.equals("kid"))
+                levelX.levelName = "дитина";
+            if (levelX.levelName.equals("elementary"))
+                levelX.levelName = "початковий";
+            if (levelX.levelName.equals("intermediate"))
+                levelX.levelName = "середній";
+            if (levelX.levelName.equals("advanced"))
+                levelX.levelName = "професійний";
+        }
+
+        viewHolder.dataView.setText(levelX.levelName);
 
         //viewHolder.imgField.setText(task.userId);
 

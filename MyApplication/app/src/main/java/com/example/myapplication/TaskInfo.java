@@ -29,11 +29,14 @@ public class TaskInfo extends AppCompatActivity {
     TextView infoTaskLevel;
     TextView infoTaskText;
     Task task;
+    String lang;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_info);
+
+        lang = ((Extended) getApplication()).getLang();
 
         infoTaskName = (TextView) findViewById(R.id.infoTaskName);
         infoTaskLevel = (TextView) findViewById(R.id.infoTaskLevel);
@@ -70,7 +73,10 @@ public class TaskInfo extends AppCompatActivity {
             @Override
             public void onResponse(JSONArray jsonArray) {
                 try {
-                    infoTaskUser.setText("Created by " + jsonArray.getJSONObject(0).getString("username"));
+                    if (lang.equals("ukr"))
+                        infoTaskUser.setText("Автор: " + jsonArray.getJSONObject(0).getString("username"));
+                    else
+                        infoTaskUser.setText("Created by: " + jsonArray.getJSONObject(0).getString("username"));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -83,7 +89,10 @@ public class TaskInfo extends AppCompatActivity {
         });
 
         infoTaskName.setText(task.name);
-        infoTaskLevel.setText("Task level : " + task.level.levelName);
+        if (lang.equals("ukr"))
+            infoTaskLevel.setText("Рівень завдання: " + task.level.levelName);
+        else
+            infoTaskLevel.setText("Task level: " + task.level.levelName);
         infoTaskText.setText(task.text);
 
         getLifecycle().addObserver(youTubePlayerView);

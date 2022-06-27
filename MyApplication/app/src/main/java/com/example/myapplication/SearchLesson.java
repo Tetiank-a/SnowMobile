@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -13,6 +14,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.NumberPicker;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -22,7 +24,6 @@ import org.json.JSONObject;
 import org.threeten.bp.LocalDateTime;
 import org.threeten.bp.format.DateTimeFormatter;
 
-import java.time.Month;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -42,13 +43,20 @@ public class SearchLesson extends AppCompatActivity {
     NumberPicker pickMinute1;
     NumberPicker pickMinute2;
 
+    TextView fromLabel;
+    TextView toLabel;
+    TextView locationLabel;
+    Button filter1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_lesson);
 
+        translate();
+
         initDatePicker1();
-        dateFrom = (Button) findViewById(R.id.dateFrom);
+        dateFrom = (Button) findViewById(R.id.d1);
         dateFrom.setText(getTodaysDate());
 
         initDatePicker2();
@@ -73,6 +81,26 @@ public class SearchLesson extends AppCompatActivity {
         pickMinute1.setMinValue(0);
         pickMinute2.setMinValue(0);
         getLocations();
+    }
+
+    @SuppressLint("SetTextI18n")
+    public void translate() {
+        fromLabel = (TextView) findViewById(R.id.fromLabel);
+        toLabel = (TextView) findViewById(R.id.toLabel);
+        locationLabel = (TextView) findViewById(R.id.locationLabel);
+        filter1 = (Button) findViewById(R.id.Filter);
+
+        if (((Extended) getApplication()).getLang().equals("ukr")) {
+            fromLabel.setText("Від");
+            toLabel.setText("До");
+            locationLabel.setText("Локація");
+            filter1.setText("Шукати");
+        } else {
+            fromLabel.setText("Date from");
+            toLabel.setText("Date to");
+            locationLabel.setText("Location");
+            filter1.setText("Search");
+        }
     }
 
     private String getTodaysDate() {

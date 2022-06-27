@@ -26,7 +26,7 @@ public class Extended extends Application {
     private ArrayList<FilteredSession> filteredSessions = new ArrayList<>();
 
     // may be "eng" or "ukr"
-    private String lang = "eng";
+    private String lang = "ukr";
 
     public void setLang(String lang) {
         this.lang = lang;

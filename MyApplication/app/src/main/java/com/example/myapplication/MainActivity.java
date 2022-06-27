@@ -141,7 +141,9 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 ListView productList = findViewById(R.id.middleBar);
-                TaskAdapter adapter = new TaskAdapter(MainActivity.this, R.layout.list_tasks, tasks, ((Extended) getApplication()).getToken());
+                TaskAdapter adapter = new TaskAdapter(MainActivity.this,
+                        R.layout.list_tasks, tasks, ((Extended) getApplication()).getToken(),
+                        ((Extended) getApplication()).getLang());
                 productList.setAdapter(adapter);
 
 

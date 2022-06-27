@@ -35,10 +35,10 @@
             android:layout_weight="1"
             android:text="Name"
             android:textSize="30sp"
-            app:layout_constraintRight_toLeftOf="@+id/regEmail" />
+            app:layout_constraintRight_toLeftOf="@+id/d2" />
 
         <EditText
-            android:id="@+id/dateFrom"
+            android:id="@+id/d1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -69,10 +69,10 @@
             android:layout_weight="1"
             android:text="Email"
             android:textSize="30sp"
-            app:layout_constraintRight_toLeftOf="@+id/regEmail" />
+            app:layout_constraintRight_toLeftOf="@+id/d2" />
 
         <EditText
-            android:id="@+id/regEmail"
+            android:id="@+id/d2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -106,7 +106,7 @@
             app:layout_constraintRight_toLeftOf="@+id/imageButton3" />
 
         <EditText
-            android:id="@+id/regPassword1"
+            android:id="@+id/d3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -138,7 +138,7 @@
             app:layout_constraintRight_toLeftOf="@+id/imageButton3" />
 
         <EditText
-            android:id="@+id/regPassword2"
+            android:id="@+id/d4"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
